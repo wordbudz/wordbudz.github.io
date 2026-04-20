@@ -18,7 +18,7 @@
         /* Sidebar */
         .sidebar {
             width: 260px;
-            background-color: #2F5E4F;
+            background-color: #2F5E4F; /* Darker green */
             color: white;
             display: flex;
             flex-direction: column;
@@ -26,12 +26,14 @@
             align-items: center;
             padding: 20px;
             box-sizing: border-box;
+            transition: width 0.3s ease;
         }
 
         .sidebar h1 {
             margin-bottom: 40px;
             font-size: 28px;
             font-weight: bold;
+            transition: opacity 0.3s ease;
         }
 
         .sidebar button {
@@ -41,7 +43,7 @@
             border: none;
             border-radius: 8px;
             background-color: white;
-            color: #40826D;
+            color: #2F5E4F;
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
@@ -60,39 +62,51 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            overflow: hidden; /* Prevent scrollbars */
         }
 
         iframe {
             width: 100%;
-            height: 95%;
+            height: 100%;
             border: none;
-            border-radius: 16px;
+            border-radius: 20px;
+            display: block;
             overflow: hidden;
+            box-shadow: 0 0 20px rgba(0,0,0,0.08);
+
+            /* Hide scrollbars inside iframe */
+            scrollbar-width: none;
+            clip-path: inset(0 round 20px);
         }
 
+        iframe::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Mobile collapsible sidebar */
         @media (max-width: 768px) {
             .sidebar {
                 width: 60px;
                 padding: 10px;
             }
-        
+
             .sidebar h1 {
-                display: none;
+                opacity: 0;
+                pointer-events: none;
             }
-        
+
             .sidebar button {
                 width: 40px;
                 font-size: 0;
                 padding: 10px;
             }
-        
+
             .sidebar button::after {
                 content: '•';
                 font-size: 24px;
-                color: #2F5E4F;
+                color: white;
             }
         }
-
     </style>
 </head>
 
@@ -103,8 +117,8 @@
         <h1>WordBudz</h1>
 
         <button onclick="openPlay()">Play Online</button>
-        <button onclick="window.open('https://apps.apple.com/', '_blank')">Try on iOS</button>
-        <button onclick="window.open('https://play.google.com/', '_blank')">Try on Android</button>
+        <button onclick="window.open('https://apps.apple.com/', '_blank')">Download on iOS</button>
+        <button onclick="window.open('https://play.google.com/', '_blank')">Download on Play Store</button>
     </div>
 
     <!-- Main content with iframe -->
@@ -114,8 +128,8 @@
 
     <script>
         function openPlay() {
-            // Scroll iframe to top or trigger any future logic
-            document.querySelector("iframe").contentWindow.location.href = "https://baggy-whirlwind-plover.anvil.app";
+            document.querySelector("iframe").contentWindow.location.href =
+                "https://baggy-whirlwind-plover.anvil.app";
         }
     </script>
 
