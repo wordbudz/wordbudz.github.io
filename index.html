@@ -152,7 +152,9 @@
 
         <button onclick="openPlay()"><i class="fa-solid fa-gamepad"></i> Play Online</button>
 
-        <button id="install-btn" style="display:none;"><i class="fa-solid fa-download"></i> Install App</button>
+        <button id="install-btn" style="display:none;" onclick="installApp()">
+          <i class="fa-solid fa-download"></i> Install App
+        </button>
 
 
     </div>
@@ -163,6 +165,8 @@
     </div>
 
     <script>
+    let deferredPrompt = null;
+    
     document.addEventListener("DOMContentLoaded", function () {
     
         function openPlay() {
@@ -170,25 +174,26 @@
                 "https://baggy-whirlwind-plover.anvil.app";
         }
     
-        let deferredPrompt;
-    
+        // Listen for the PWA install availability
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             deferredPrompt = e;
             document.getElementById("install-btn").style.display = "block";
         });
     
-        document.getElementById("install-btn").addEventListener("click", function () {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                deferredPrompt.userChoice.then(() => {
-                    deferredPrompt = null;
-                });
-            }
-        });
+        // Install function tied to your button
+        window.installApp = function () {
+            if (!deferredPrompt) return;
+    
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then(() => {
+                deferredPrompt = null;
+            });
+        };
     
     });
     </script>
+
 
 
 
