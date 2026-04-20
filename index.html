@@ -152,16 +152,17 @@
     </div>
 
     <script>
-    function openPlay() {
-        document.querySelector("iframe").contentWindow.location.href =
-            "https://baggy-whirlwind-plover.anvil.app";
-    }
-
-    function openHowToPlay() {
-    document.querySelector("iframe").contentWindow.location.href =
-        "https://baggy-whirlwind-plover.anvil.app/#info";
-    }
+        function openPlay() {
+            document.querySelector("iframe").src =
+                "https://baggy-whirlwind-plover.anvil.app";
+        }
+    
+        function openHowToPlay() {
+            document.querySelector("iframe").src =
+                "https://baggy-whirlwind-plover.anvil.app/#info";
+        }
     </script>
+
 
 
 </body>
