@@ -142,8 +142,8 @@
 
         <button onclick="openPlay()"><i class="fa-solid fa-gamepad"></i> Play Online</button>
 
-        <button id="install-btn" style="display:none;" onclick="installApp()">
-          <i class="fa-solid fa-download"></i> Install App
+        <button onclick="openHowToPlay()">
+          <i class="fa-solid fa-circle-info"></i> How to Play
         </button>
     </div>
 
@@ -152,31 +152,17 @@
     </div>
 
     <script>
-    let deferredPrompt = null;
+    function openPlay() {
+        document.querySelector("iframe").contentWindow.location.href =
+            "https://baggy-whirlwind-plover.anvil.app";
+    }
 
-    document.addEventListener("DOMContentLoaded", function () {
-
-        window.openPlay = function () {
-            document.querySelector("iframe").contentWindow.location.href =
-                "https://baggy-whirlwind-plover.anvil.app";
-        };
-
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            document.getElementById("install-btn").style.display = "block";
-        });
-
-        window.installApp = function () {
-            if (!deferredPrompt) return;
-            deferredPrompt.prompt();
-            deferredPrompt.userChoice.then(() => {
-                deferredPrompt = null;
-            });
-        };
-
-    });
+    function openHowToPlay() {
+    document.querySelector("iframe").contentWindow.location.href =
+        "https://baggy-whirlwind-plover.anvil.app/#info";
+    }
     </script>
+
 
 </body>
 </html>
