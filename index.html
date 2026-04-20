@@ -1,43 +1,99 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Primary Meta Tags -->
     <title>WordBudz</title>
-    <meta name="title" content="WordBudz">
-    <meta name="description" content="Find Your Word a Bud">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://wordbudz.github.io/">
-    <meta property="og:title" content="WordBudz">
-    <meta property="og:description" content="Find Your Word a Bud">
-    <meta property="og:image" content="https://baggy-whirlwind-plover.anvil.app/_/theme/wordbudz-high-resolution-logo-white.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="WordBudz Logo">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://wordbudz.github.io/">
-    <meta property="twitter:title" content="WordBudz">
-    <meta property="twitter:description" content="Find Your Word a Bud">
-    <meta property="twitter:image" content="https://baggy-whirlwind-plover.anvil.app/_/theme/wordbudz-high-resolution-logo-white.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="WordBudz Logo">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="https://baggy-whirlwind-plover.anvil.app/_/theme/download.png">
-    
-    <!-- Redirect to Anvil app -->
-    <script type="text/javascript">
-        window.location.replace("https://baggy-whirlwind-plover.anvil.app");
-    </script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 260px;
+            background-color: #40826D;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .sidebar h1 {
+            margin-bottom: 40px;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .sidebar button {
+            width: 180px;
+            padding: 12px 18px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 8px;
+            background-color: white;
+            color: #40826D;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .sidebar button:hover {
+            background-color: #e6e6e6;
+        }
+
+        /* Main content area */
+        .main {
+            flex: 1;
+            background-color: #f5f5f5;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        iframe {
+            width: 95%;
+            height: 95%;
+            border: none;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+    </style>
 </head>
+
 <body>
-    <p>Redirecting to WordBudz...</p>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h1>WordBudz</h1>
+
+        <button onclick="openPlay()">Play Online</button>
+        <button onclick="window.open('https://apps.apple.com/', '_blank')">Download on iOS</button>
+        <button onclick="window.open('https://play.google.com/', '_blank')">Download on Play Store</button>
+    </div>
+
+    <!-- Main content with iframe -->
+    <div class="main">
+        <iframe src="https://baggy-whirlwind-plover.anvil.app"></iframe>
+    </div>
+
+    <script>
+        function openPlay() {
+            // Scroll iframe to top or trigger any future logic
+            document.querySelector("iframe").contentWindow.location.href = "https://baggy-whirlwind-plover.anvil.app";
+        }
+    </script>
+
 </body>
 </html>
