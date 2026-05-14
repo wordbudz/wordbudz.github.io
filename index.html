@@ -34,6 +34,18 @@
 
     <!-- Mobile/Desktop Redirect -->
     <script>
+    window.addEventListener('message', function(event) {
+        // Optional: Ensure the message is coming from your Anvil app domain
+        // if (event.origin !== 'https://cold-twin-save.anvil.app') return;
+    
+        if (event.data && event.data.route) {
+          const newRoute = event.data.route;
+          
+          // Updates the browser URL to match the active iframe page
+          // e.g., yoursite.com/weather -> yoursite.com/time_variate
+          window.history.pushState({ path: newRoute }, '', newRoute);
+        }
+      });
       function isMobile() {
         return /iphone|ipad|android|mobile/i.test(navigator.userAgent);
       }
